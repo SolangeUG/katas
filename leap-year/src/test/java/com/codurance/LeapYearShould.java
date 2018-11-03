@@ -18,4 +18,10 @@ public class LeapYearShould {
         LeapYear year = new LeapYear(1996);
         assertThat(year.isLeapYear(), is(Boolean.TRUE));
     }
+
+    @Test
+    public void return_true_when_input_year_is_divisible_by_400() {
+        LeapYear year = new LeapYear(2000);
+        assertThat(year.isLeapYear(), is(Boolean.TRUE));
+    }
 }
