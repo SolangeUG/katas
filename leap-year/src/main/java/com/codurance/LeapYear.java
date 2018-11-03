@@ -10,8 +10,10 @@ class LeapYear {
 
     Boolean isLeapYear() {
         boolean result;
-        result = isDivisibleBy(400)
-                    || isDivisibleBy(4);
+        if (isDivisibleBy(100))
+            return isDivisibleBy(400);
+
+        result = isDivisibleBy(4);
         return result;
     }
 
