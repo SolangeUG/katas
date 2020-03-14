@@ -7,23 +7,16 @@ public class StringCalculator {
 
     public int add(String numbers) {
 
-        final String separator = ",";
-
         if (numbers.startsWith("//")) {
-            final String[] input = numbers.split("\n");
-            final String customSeparator = input[0]
-                    .replace("//", "")
-                    .replace("[", "")
-                    .replace("]", "");
-            numbers = input[1].replace(customSeparator, separator);
+            numbers = replaceCustomSeparators(numbers);
         }
 
         if (numbers.contains("\n")) {
             numbers = numbers.replace("\n", ",");
         }
 
-        if (numbers.contains(separator)) {
-            return add(numbers, separator);
+        if (numbers.contains(",")) {
+            return sumOf(numbers);
         }
 
         if (numbers.equals("")) {
@@ -33,8 +26,18 @@ public class StringCalculator {
         return Integer.parseInt(numbers);
     }
 
-    private int add(String numbers, String separator) {
-        final String[] values = numbers.split(separator);
+    private String replaceCustomSeparators(String numbers) {
+        final String[] input = numbers.split("\n");
+        final String customSeparator = input[0]
+                .replace("//", "")
+                .replace("[", "")
+                .replace("]", "");
+        numbers = input[1].replace(customSeparator, ",");
+        return numbers;
+    }
+
+    private int sumOf(String numbers) {
+        final String[] values = numbers.split(",");
         final List<String> negatives = new ArrayList<>();
         int sum = 0;
         for (String value: values) {
