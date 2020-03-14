@@ -32,4 +32,13 @@ public class StringCalculatorShould {
 
         assertEquals(1, actual);
     }
+
+    @Test
+    public void return_two_on_an_input_string_of_two() {
+        final StringCalculator calculator = new StringCalculator();
+
+        final int actual = calculator.add("2");
+
+        assertEquals(2, actual);
+    }
 }
