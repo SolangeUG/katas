@@ -1,32 +1,24 @@
 package com.codurance.calculator;
 
-import java.util.Arrays;
-
 public class StringCalculator {
 
     public int add(String numbers) {
 
-        if (numbers.startsWith("//")) {
-            final char separator = numbers.charAt(2);
-            final String[] input = numbers.split("\n");
-            final String values = input[1];
+        String separator = ",";
 
-            final String replaced = values.replace(separator, ',');
-            return add(replaced);
+        if (numbers.startsWith("//")) {
+            final String[] input = numbers.split("\n");
+
+            separator = input[0].replace("//", "");
+            numbers = input[1];
         }
 
         if (numbers.contains("\n")) {
-            final String replaced = numbers.replace("\n", ",");
-            return add(replaced);
+            numbers = numbers.replace("\n", ",");
         }
 
-        if (numbers.contains(",")) {
-            final String[] values = numbers.split(",");
-            int sum = 0;
-            for (String value: values) {
-                sum = sum + Integer.parseInt(value);
-            }
-            return sum;
+        if (numbers.contains(separator)) {
+            return add(numbers, separator);
         }
 
         if (numbers.equals("")) {
@@ -34,5 +26,14 @@ public class StringCalculator {
         }
 
         return Integer.parseInt(numbers);
+    }
+
+    private int add(String numbers, String separator) {
+        final String[] values = numbers.split(separator);
+        int sum = 0;
+        for (String value: values) {
+            sum = sum + Integer.parseInt(value);
+        }
+        return sum;
     }
 }
