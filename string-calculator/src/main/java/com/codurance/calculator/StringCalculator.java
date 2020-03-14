@@ -11,6 +11,10 @@ public class StringCalculator {
             return 0;
         }
 
+        if (numbers.equals("1")) {
+            return 1;
+        }
+
         throw new UnsupportedOperationException("Not yet implemented");
     }
 }

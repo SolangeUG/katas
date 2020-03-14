@@ -24,4 +24,12 @@ public class StringCalculatorShould {
         assertEquals(0, actual);
     }
 
+    @Test
+    public void return_one_on_an_input_string_of_one() {
+        final StringCalculator calculator = new StringCalculator();
+
+        final int actual = calculator.add("1");
+
+        assertEquals(1, actual);
+    }
 }
