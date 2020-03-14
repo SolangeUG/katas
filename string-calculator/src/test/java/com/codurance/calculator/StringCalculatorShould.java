@@ -84,4 +84,12 @@ public class StringCalculatorShould {
 
         calculator.add("1,-2,-3");
     }
+
+    @Test
+    public void ignore_numbers_bigger_than_a_thousand() {
+
+        final int actual = calculator.add("1001,2");
+
+        assertEquals(2, actual);
+    }
 }

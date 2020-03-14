@@ -2,7 +2,6 @@ package com.codurance.calculator;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringJoiner;
 
 public class StringCalculator {
 
@@ -41,7 +40,9 @@ public class StringCalculator {
             if (integerValue < 0) {
                 negatives.add(value);
             }
-            sum = sum + integerValue;
+            if (integerValue < 100) {
+                sum = sum + integerValue;
+            }
         }
 
         if (! negatives.isEmpty()) {
