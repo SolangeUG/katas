@@ -63,4 +63,12 @@ public class StringCalculatorShould {
 
         assertEquals(6, actual);
     }
+
+    @Test
+    public void return_appropriate_sum_for_input_string_with_custom_separator() {
+
+        final int actual = calculator.add("//;\n1;2");
+
+        assertEquals(3, actual);
+    }
 }
