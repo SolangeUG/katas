@@ -1,5 +1,9 @@
 package com.codurance.calculator;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringJoiner;
+
 public class StringCalculator {
 
     public int add(String numbers) {
@@ -30,10 +34,21 @@ public class StringCalculator {
 
     private int add(String numbers, String separator) {
         final String[] values = numbers.split(separator);
+        final List<String> negatives = new ArrayList<>();
         int sum = 0;
         for (String value: values) {
-            sum = sum + Integer.parseInt(value);
+            final int integerValue = Integer.parseInt(value);
+            if (integerValue < 0) {
+                negatives.add(value);
+            }
+            sum = sum + integerValue;
         }
+
+        if (! negatives.isEmpty()) {
+            throw new IllegalArgumentException(
+                    "error: negatives not allowed: " + String.join(" ", negatives));
+        }
+
         return sum;
     }
 }

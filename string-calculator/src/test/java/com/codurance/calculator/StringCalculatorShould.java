@@ -1,6 +1,8 @@
 package com.codurance.calculator;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
 
@@ -70,5 +72,16 @@ public class StringCalculatorShould {
         final int actual = calculator.add("//;\n1;2");
 
         assertEquals(3, actual);
+    }
+
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
+
+    @Test
+    public void disallow_negative_numbers() {
+        expectedException.expect(IllegalArgumentException.class);
+        expectedException.expectMessage("error: negatives not allowed: -2 -3");
+
+        calculator.add("1,-2,-3");
     }
 }
