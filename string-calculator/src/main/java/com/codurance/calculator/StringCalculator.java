@@ -7,13 +7,15 @@ public class StringCalculator {
 
     public int add(String numbers) {
 
-        String separator = ",";
+        final String separator = ",";
 
         if (numbers.startsWith("//")) {
             final String[] input = numbers.split("\n");
-
-            separator = input[0].replace("//", "");
-            numbers = input[1];
+            final String customSeparator = input[0]
+                    .replace("//", "")
+                    .replace("[", "")
+                    .replace("]", "");
+            numbers = input[1].replace(customSeparator, separator);
         }
 
         if (numbers.contains("\n")) {

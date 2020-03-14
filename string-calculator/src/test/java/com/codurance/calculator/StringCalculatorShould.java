@@ -92,4 +92,12 @@ public class StringCalculatorShould {
 
         assertEquals(2, actual);
     }
+
+    @Test
+    public void return_appropriate_sum_for_input_with_arbitrary_length_separator() {
+
+        final int actual = calculator.add("//[***]\n1***2***3");
+
+        assertEquals(6, actual);
+    }
 }
