@@ -3,6 +3,12 @@ package com.codurance.calculator;
 public class StringCalculator {
 
     public int add(String numbers) {
+
+        if (numbers.contains("\n")) {
+            final String replaced = numbers.replace("\n", ",");
+            return add(replaced);
+        }
+
         if (numbers.contains(",")) {
             final String[] values = numbers.split(",");
             int sum = 0;
