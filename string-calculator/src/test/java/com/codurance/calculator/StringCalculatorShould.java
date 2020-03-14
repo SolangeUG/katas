@@ -15,4 +15,13 @@ public class StringCalculatorShould {
         assertEquals(0, actual);
     }
 
+    @Test
+    public void return_zero_on_an_input_string_of_zero() {
+        final StringCalculator calculator = new StringCalculator();
+
+        final int actual = calculator.add("0");
+
+        assertEquals(0, actual);
+    }
+
 }

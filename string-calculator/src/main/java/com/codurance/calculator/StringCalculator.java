@@ -7,6 +7,10 @@ public class StringCalculator {
             return 0;
         }
 
+        if (numbers.equals("0")) {
+            return 0;
+        }
+
         throw new UnsupportedOperationException("Not yet implemented");
     }
 }
