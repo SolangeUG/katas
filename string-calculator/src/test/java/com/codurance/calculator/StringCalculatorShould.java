@@ -50,4 +50,13 @@ public class StringCalculatorShould {
 
         assertEquals(3, actual);
     }
+
+    @Test
+    public void return_sum_of_all_values_in_an_arbitrary_input_string_size() {
+        final StringCalculator calculator = new StringCalculator();
+
+        final int actual = calculator.add("1,2,3,4,5,6,7,8,9");
+
+        assertEquals(45, actual);
+    }
 }
