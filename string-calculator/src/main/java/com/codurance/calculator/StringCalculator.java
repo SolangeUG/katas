@@ -36,12 +36,12 @@ public class StringCalculator {
         final List<String> negatives = new ArrayList<>();
         int sum = 0;
         for (String value: values) {
-            final int integerValue = Integer.parseInt(value);
-            if (integerValue < 0) {
+            final int number = Integer.parseInt(value);
+            if (number < 0) {
                 negatives.add(value);
             }
-            if (integerValue < 100) {
-                sum = sum + integerValue;
+            if (number < 1000) {
+                sum = sum + number;
             }
         }
 
