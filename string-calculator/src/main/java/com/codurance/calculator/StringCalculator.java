@@ -34,18 +34,17 @@ public class StringCalculator {
             customSeparator = customSeparator.replace("[", "").replace("]", "");
 
             if (isArbitraryLength(customSeparator)) {
-                numbers = input[1].replace(customSeparator, ",");
-            } else {
-                numbers = input[1];
-                for (Character character: customSeparator.toCharArray()) {
-                    numbers = numbers.replace(character, ',');
-                }
+                return input[1].replace(customSeparator, ",");
             }
-        } else {
-            numbers = input[1].replace(customSeparator, ",");
+
+            numbers = input[1];
+            for (Character character: customSeparator.toCharArray()) {
+                numbers = numbers.replace(character, ',');
+            }
+            return numbers;
         }
 
-        return numbers;
+        return input[1].replace(customSeparator, ",");
     }
 
     private int sumOf(String numbers) {
