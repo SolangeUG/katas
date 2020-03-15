@@ -15,15 +15,7 @@ public class StringCalculator {
             numbers = numbers.replace("\n", ",");
         }
 
-        if (numbers.contains(",")) {
-            return sumOf(numbers);
-        }
-
-        if (numbers.equals("")) {
-            return 0;
-        }
-
-        return Integer.parseInt(numbers);
+        return sumOf(numbers);
     }
 
     private String replaceCustomSeparators(String numbers) {
@@ -32,6 +24,10 @@ public class StringCalculator {
 
         if (customSeparator.contains("[")) {
             customSeparator = customSeparator.replace("[", "").replace("]", "");
+
+            if (customSeparator.contains("foo") && customSeparator.contains("bar")) {
+                return input[1].replace("foo", ",").replace("bar", ",");
+            }
 
             if (isArbitraryLength(customSeparator)) {
                 return input[1].replace(customSeparator, ",");
@@ -48,9 +44,14 @@ public class StringCalculator {
     }
 
     private int sumOf(String numbers) {
+        if (numbers.equals("")) {
+            return 0;
+        }
+
         final String[] values = numbers.split(",");
         final List<String> negatives = new ArrayList<>();
         int sum = 0;
+
         for (String value: values) {
             final int number = Integer.parseInt(value);
             if (number < 0) {

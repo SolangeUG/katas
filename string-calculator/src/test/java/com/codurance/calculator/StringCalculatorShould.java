@@ -108,4 +108,12 @@ public class StringCalculatorShould {
 
         assertEquals(6, actual);
     }
+
+    @Test
+    public void return_appropriate_sum_for_multiple_longer_length_separators() {
+
+        final int actual = calculator.add("//[foo][bar]\n1foo2bar3");
+
+        assertEquals(6, actual);
+    }
 }
