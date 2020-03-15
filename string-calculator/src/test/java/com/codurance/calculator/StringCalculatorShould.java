@@ -100,4 +100,12 @@ public class StringCalculatorShould {
 
         assertEquals(6, actual);
     }
+
+    @Test
+    public void return_appropriate_sum_for_input_with_multiple_single_length_separators() {
+
+        final int actual = calculator.add("//[*][%]\n1*2%3");
+
+        assertEquals(6, actual);
+    }
 }

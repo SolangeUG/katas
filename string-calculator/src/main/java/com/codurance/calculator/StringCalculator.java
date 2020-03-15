@@ -28,11 +28,23 @@ public class StringCalculator {
 
     private String replaceCustomSeparators(String numbers) {
         final String[] input = numbers.split("\n");
-        final String customSeparator = input[0]
-                .replace("//", "")
-                .replace("[", "")
-                .replace("]", "");
-        numbers = input[1].replace(customSeparator, ",");
+        String customSeparator = input[0].replace("//", "");
+
+        if (customSeparator.contains("[")) {
+            customSeparator = customSeparator.replace("[", "").replace("]", "");
+
+            if (isArbitraryLength(customSeparator)) {
+                numbers = input[1].replace(customSeparator, ",");
+            } else {
+                numbers = input[1];
+                for (Character character: customSeparator.toCharArray()) {
+                    numbers = numbers.replace(character, ',');
+                }
+            }
+        } else {
+            numbers = input[1].replace(customSeparator, ",");
+        }
+
         return numbers;
     }
 
@@ -56,5 +68,11 @@ public class StringCalculator {
         }
 
         return sum;
+    }
+
+    private boolean isArbitraryLength(String customSeparator) {
+        final String firstCharacter = customSeparator.substring(0, 1);
+        final String restOfSeparator = customSeparator.substring(1);
+        return restOfSeparator.contains(firstCharacter);
     }
 }
