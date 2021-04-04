@@ -9,3 +9,6 @@ target/
 # Binaries
 *.jar
 *.class
+
+# OS files
+.DS_Store
